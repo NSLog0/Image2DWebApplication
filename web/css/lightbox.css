@@ -1,0 +1,92 @@
+.show{
+    position: relative;
+    top: 210px;
+    margin: auto;
+    border: solid 1px black;
+    width: 1016px;  
+    height: 305px;
+}
+
+hr{
+    position: relative;
+    top: 155px;
+    width: 1200px;
+    color: black;
+}
+
+
+.bg{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height: 100%;
+    background:#000;
+    z-index:50;
+    display: none;
+
+}
+
+.lightbox{
+    position:absolute;
+    top: 150px;
+    left: 31%;
+    width: 528px;
+    height: 420px;
+    background: #eee;
+    z-index:51;
+    padding:10px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -moz-box-shadow:0px 0px 5px #444444;
+    -webkit-box-shadow:0px 0px 5px #444444;
+    box-shadow:0px 0px 5px #444444;
+    display: none;
+
+
+    border-bottom: 2px solid #666;  border-right: 2px solid #666;
+
+}
+.lightbox p{
+    position: absolute;
+    width: 116px;
+    top: 395px;
+    left: 432px;
+}
+
+.lightbox img{
+    position: relative;
+    top: -32px;
+    right: 1px;
+}
+
+.close
+{
+    width: 30px;
+    height: 32px;
+    display: block;
+    top: -17px;
+    left: 518px;
+    text-indent: -1000em;
+    background: url('../images/close.png');
+    position: relative;
+    z-index: 56;
+}
+
+.posi {
+    font-size: 1.3em;
+    position: relative;
+    top: 4px;
+    color: black;
+    right: -210px;
+}
+
+#loadingImage{
+
+    position: absolute;
+    z-index: 150;
+    top: 307px;
+    left: 630px;
+    display: none;
+}
