@@ -1,4 +1,4 @@
-    
+
 navigator.getUserMedia = navigator.webkitGetUserMedia || navigator.getUserMedia;
 window.URL = window.URL || window.webkitURL;
 
@@ -13,6 +13,7 @@ function gotStream(stream) {
         video.src = window.URL.createObjectURL(stream);
     } else {
         video.src = stream; //-o
+        // $('#start , #text-msg').fadeOut('200');
     }
 
     video.onerror = function(e) {
@@ -21,38 +22,37 @@ function gotStream(stream) {
 
     stream.onended = noStream;
 
-   
+
 
     // Since video.onloadedmetadata isn't firing for getUserMedia video, we have
     // to fake it.
     setTimeout(function() {
         canvas.width = video.videoWidth;
         canvas.height = video.videoHeight;
-        document.getElementById('text-msg').hidden = true;
-        document.getElementById('wrapper').hidden = false;
-        document.getElementById('cap').hidden = false;
-        document.getElementById('goto').hidden = false;
-        document.getElementById('start').hidden = true;
+        $('#text-msg , #cap,#goto').css('display', 'none');
+        $('#wrapper').fadeIn('300');
+        $('#text-msg').css('display', 'none');
+        $('#cap').css('display', 'block');
+        $('#start').fadeOut('900');
 
-    }, 800);
+    }, 200);
+
+    $('#rquery').fadeOut('900');
+    $('#re , #goto').fadeOut('100');
 }
 
 function noStream(e) {
     var msg = 'Camera has stoped or click agian access to use camera';
-    if (e.code == 1) {
+    if (e.code === 1) {
         msg = 'User denied access to use camera.';
     }
     document.getElementById('error').textContent = msg;
 }
 
-function reload(){
-    onStart();
-    close();
-}
 
-function close(){
-                    
-    $('.bg , .lightbox').css('display','none');
+function close() {
+
+    $('.bg , .lightbox').css('display', 'none');
 }
 
 function capture() {
@@ -62,53 +62,67 @@ function capture() {
     photo.height = video.clientHeight;
     context.drawImage(video, 0, 0, photo.width, photo.height);
     var img = document.createElement('img');
-    img.src = canvas.toDataURL('image/png');
-    gallery.appendChild(img);
-    //window.open(img.src, '_blank');
-    onStop();
-    $(document).ready(function(){
-        $('.bg').animate({
-            "opacity":"0.9"
-        },300, "linear");
-        $('div#main-photo').each(function() {
-            var $a1 = $(this);
-            var src = $a1.find('img').attr('src');
-            $('.bg').fadeIn(600)
-            $('div.bg img#loadingImage').show();
-            $('div.lightbox img').attr('src',src);
-            $('.lightbox').delay(2000).fadeIn(600);
-        });
-       
-        $('.close').click(function(){
-                   
-            close();
-        });
-    });
-            
-  
-    
-    gallery.removeChild(img);
-   
+    img.src = canvas.toDataURL('image/jpeg');
+    img.id = "rquery";
+    video.src = " ";
+    $('#wrapper').fadeOut('200');
+    setTimeout(function() {
+        $('#re , #goto').fadeIn('300');
+        insertAfter(document.getElementById('wrapper'), img);
+    }, 700);
+    /*
+     $(document).ready(function() {
+     $('.bg').animate({
+     "opacity": "0.9"
+     }, 300, "linear");
+     $('div#main-photo').each(function() {
+     var $a1 = $(this);
+     var src = $a1.find('img').attr('src');
+     $('.bg').fadeIn(600)
+     $('div.bg img#loadingImage').show();
+     $('div.lightbox img').attr('src', src);
+     $('div.lightbox img').addClass('query');
+     $('.lightbox').delay(2000).fadeIn(600);
+     });
+     
+     $('.close').click(function() {
+     
+     close();
+     });
+     });
+     */
+
+
+
+    //  gallery.removeChild(img);
+
 }
 
 function onStop() {
+
+    $('#wrapper').fadeOut('700');
+    setTimeout(function() {
+        $('#start').fadeIn('200');
+        $('#text-msg').fadeIn('600');
+    }, 376);
+
     video.src = " ";
-    document.getElementById('text-msg').hidden = false;
-    document.getElementById('wrapper').hidden = true;
-    document.getElementById("start").hidden = false;
 
 }
 
 function onStart() {
-    
     if (!navigator.getUserMedia) {
         document.getElementById('error').innerHTML = 'Sorry. <code>navigator.getUserMedia()</code> is not available.';
         return;
     } else {
-
         navigator.getUserMedia({
-            video : true
+            video: true
         }, gotStream, noStream);
     }
 
+
+}
+
+function insertAfter(referenceNode, newNode) {
+    referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
 }

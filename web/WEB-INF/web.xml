@@ -6,7 +6,7 @@
     </context-param>
     <servlet>
         <servlet-name>RequestHandle</servlet-name>
-        <servlet-class>sernior.serv.image2D.RequestHandle</servlet-class>
+        <servlet-class>com.pratchaya.servlet.client.RequestHandle</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>RequestHandle</servlet-name>
@@ -18,6 +18,6 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>index.xhtml</welcome-file>
+        <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
 </web-app>

@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <base href="http://localhost:8080/Image2DWebApplication/">
+        <base href="http://localhost:8084/Image2DWebApplication/">
         <link rel="stylesheet" type="text/css" href="css/core.css">
         <link rel="stylesheet" type="text/css" href="css/lightbox.css">
         <link rel="stylesheet" href="css/font-awesome.min.css">
@@ -20,22 +20,36 @@
 
     <body>
         <header> <!-- Header -->
-            <div id="logo">
-                <p>Quality Analytics</p>
-            </div><!-- end Logo -->
-            <div id="navigation">
-                <ul>
-                    <li class="selected"><a href="index.php">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#">Help</a></li>
-                </ul>
-            </div> <!-- end Navigation -->
+            <div id="outside">
+                <div id="inside" class="inside">
+                </div>
+            </div>           
+            <div id="header">
+                <div>
+                    <a href="index.html" id="logo"><img src="images/logo.png" alt="logo"></a>
+                    <ul>
+                        <li class="selected">
+                            <a href="index.html">Home</a>
+                        </li>
+                        <li>
+                            <a href="subdivisions.html">About</a>
+                        </li>
+                        <li>
+                            <a href="blog.html">Contact</a>
+                        </li>
+                        <li>
+                            <a href="about.html">Help</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+            <!-- end Navigation -->
         </header>
         <!-- end Logo -->
 
         <div id="wrap-outer"><!-- Wraper content -->
-            <article id="video-section"> <!-- video sec-->
+            <article id="video-section"> <!-- video sec -->
                 <h1>Rice Quality Analytics with Images Processing</h1>
                 <section id="wrapper" hidden=""> <!-- camara content -->
                     <div id="video-area"> <!-- videdo wrapper -->
@@ -43,11 +57,16 @@
                         <div id="stop-wrapper">
                             <input type="button" id="stop-btn" onclick="onStop();" value="" hidden=""/> <!-- stop -->
                         </div>
-                        <video id="screen" autoplay="" src=" "></video> <!-- monotro -->
-                    </div>
-                    <i class="icon-camera icon-2x" id="cap" onclick="capture();"></i>
-                </section> <!-- end camara content -->
+                        <div id="wap">
+                            <video id="screen"autoplay="" src=" "></video> <!-- monotro -->
+                        </div>
 
+                    </div>
+                    <input type="button" id="cap" onclick="capture();" value="" /> 
+
+                </section> <!-- end camara content -->
+                <input type="button" id="goto" onclick="sendto();" value="Analysis" /> 
+                <input type="button" id="re" onclick="onStart(this);"  value="Refresh" />
                 <p id="btn"> <!-- btn sec -->
                     <input type="button" id="start" onclick="onStart(this);" hidden="" />
                 </p>
@@ -65,18 +84,39 @@
                     <a class="close">x</a>
                     <p>press x to close</p>
                     <img />
-                    <form action="includes/simple.jsp" method="post" enctype="multipart/form-data">
-                        <input type="submit" id="goto" onclick="" value="Analysis"/> 
-                        <input type="button" id="re" onclick="reload();"  value="Refresh"/>
-                    </form>
                 </div>
                 <!-- end light box -->
             </article> <!-- end video sec -->
         </div><!-- end Wraper Content -->
-        <canvas id="photo" style="display: none"></canvas>
+        <canvas id="photo"></canvas>
 
         <script src="js/videoOption.js"></script>
         <script src="js/webRTC.js"></script>
+
+        <script>
+                                /*
+                                 var url = "http://localhost:8084/REStfulService/resources/json/service/get"; 
+                                 $(document).ready(function(){
+                                 //attach a jQuery live event to the button
+                                 $('#goto').click(function(){
+                                 $.getJSON(url, function(data) {
+                                 //alert(data); //uncomment this for debug
+                                 //alert (data.item1+" "+data.item2+" "+data.item3); //further debug
+                                 $('#showdata').html("<p>Broken: "+data[0].broken+" Unbroken: "+data[0].unbroken+" Count: "+data[0].count+"Image <img src=\""+data[0].image2base64+"\""+"/></p>");
+                                 });
+                                 });
+                                 });
+                                 */
+                                function sendto() {
+                                    var url = 'http://localhost:8084/Image2DWebApplication/requesthandle';
+                                    var imageData = $('query').prop('src');
+                                    var param = {image: imageData};
+                                    $.post(url, param, function(data) {
+
+                                    });
+                                }
+        </script>
+
         <footer></footer>
     </body>
 </html>
