@@ -26,19 +26,19 @@
             </div>           
             <div id="header">
                 <div>
-                    <a href="index.html" id="logo"><img src="images/logo.png" alt="logo"></a>
+                    <a href="index.html" id="logo"><h1>{Rice}Analyze</h1></a>
                     <ul>
                         <li class="selected">
-                            <a href="index.html">Home</a>
+                            <a href="#">Home</a>
                         </li>
                         <li>
-                            <a href="subdivisions.html">About</a>
+                            <a href="includes/about.jsp">About</a>
                         </li>
                         <li>
-                            <a href="blog.html">Contact</a>
+                            <a href="includes/contact.jsp">Contact</a>
                         </li>
                         <li>
-                            <a href="about.html">Help</a>
+                            <a href="includes/help.jsp">Help</a>
                         </li>
 
                     </ul>
@@ -51,6 +51,8 @@
         <div id="wrap-outer"><!-- Wraper content -->
             <article id="video-section"> <!-- video sec -->
                 <h1>Rice Quality Analytics with Images Processing</h1>
+                <input type="button" id="goto" onclick="sendto();" value="Analysis" /> 
+                <input type="button" id="re" onclick="onStart(this);"  value="Refresh" />
                 <section id="wrapper" hidden=""> <!-- camara content -->
                     <div id="video-area"> <!-- videdo wrapper -->
                         <span>Ready</span> <!-- Status -->
@@ -60,13 +62,10 @@
                         <div id="wap">
                             <video id="screen"autoplay="" src=" "></video> <!-- monotro -->
                         </div>
-
                     </div>
                     <input type="button" id="cap" onclick="capture();" value="" /> 
 
                 </section> <!-- end camara content -->
-                <input type="button" id="goto" onclick="sendto();" value="Analysis" /> 
-                <input type="button" id="re" onclick="onStart(this);"  value="Refresh" />
                 <p id="btn"> <!-- btn sec -->
                     <input type="button" id="start" onclick="onStart(this);" hidden="" />
                 </p>
@@ -90,33 +89,39 @@
         </div><!-- end Wraper Content -->
         <canvas id="photo"></canvas>
 
+        <div id="footer">
+            <div>
+                <p>
+                    &#169; 2013 Pratchaya Suputsopon. All Rights Reserved.
+                </p>
+
+            </div>
+        </div>
+        <script>
+                    /*
+                     var url = "http://localhost:8084/REStfulService/resources/json/service/get"; 
+                     $(document).ready(function(){
+                     //attach a jQuery live event to the button
+                     $('#goto').click(function(){
+                     $.getJSON(url, function(data) {
+                     //alert(data); //uncomment this for debug
+                     //alert (data.item1+" "+data.item2+" "+data.item3); //further debug
+                     $('#showdata').html("<p>Broken: "+data[0].broken+" Unbroken: "+data[0].unbroken+" Count: "+data[0].count+"Image <img src=\""+data[0].image2base64+"\""+"/></p>");
+                     });
+                     });
+                     });
+                     */
+                    function sendto() {
+                        var url = 'http://localhost:8084/Image2DWebApplication/requesthandle';
+                        var imageData = $('query').prop('src');
+                        var param = {image: imageData};
+                        $.post(url, param, function(data) {
+
+                        });
+                    }
+        </script>
         <script src="js/videoOption.js"></script>
         <script src="js/webRTC.js"></script>
 
-        <script>
-                                /*
-                                 var url = "http://localhost:8084/REStfulService/resources/json/service/get"; 
-                                 $(document).ready(function(){
-                                 //attach a jQuery live event to the button
-                                 $('#goto').click(function(){
-                                 $.getJSON(url, function(data) {
-                                 //alert(data); //uncomment this for debug
-                                 //alert (data.item1+" "+data.item2+" "+data.item3); //further debug
-                                 $('#showdata').html("<p>Broken: "+data[0].broken+" Unbroken: "+data[0].unbroken+" Count: "+data[0].count+"Image <img src=\""+data[0].image2base64+"\""+"/></p>");
-                                 });
-                                 });
-                                 });
-                                 */
-                                function sendto() {
-                                    var url = 'http://localhost:8084/Image2DWebApplication/requesthandle';
-                                    var imageData = $('query').prop('src');
-                                    var param = {image: imageData};
-                                    $.post(url, param, function(data) {
-
-                                    });
-                                }
-        </script>
-
-        <footer></footer>
     </body>
 </html>

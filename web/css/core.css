@@ -26,6 +26,60 @@ body {
 }
 
 
+#header {
+    background:url(../images/bg-header.jpg);
+    height:130px;
+    border-bottom: 1px solid rgb(202, 211, 218);
+}
+#header div {
+    margin:0 auto;
+    overflow:hidden;
+    padding:0 0 0 29px;
+    width:931px;
+}
+#header div a#logo {
+    display:block;
+    float:left;
+    margin:25px 0 0;
+}
+#header div ul {
+    float:right;
+    list-style:none;
+    margin:0;
+    overflow:hidden;
+    padding:0;
+}
+#header div ul li {
+    float:left;
+    height:130px;
+    text-align:center;
+    width:110px;
+}
+#header div ul li a {
+    color:#787b66;
+    display:block;
+    height:130px;
+    letter-spacing:.075em;
+    line-height:150px;
+    text-align:center;
+    text-decoration:none;
+    text-shadow:0 1px 0 #fff;
+    width:110px;
+    font-size: 16px;
+}
+#header div ul li.selected a {
+    background:url(../images/bg-nav-selected.png) repeat-x;
+}
+#header div ul li.selected a, #header div ul li a:hover {
+    color:#1bb5ac;
+}
+
+
+#outside .inside{
+    background: transparent;
+    padding: 1px 40px 4px 0;
+
+}
 
 hr {
     border-top: 1px solid #f2cc3d;
@@ -66,9 +120,11 @@ hr {
 }
 
 #wrapper {
-    margin: 10px auto 0 auto;
-    z-index: 10;
+   
+    z-index: 1;
     position: relative;
+    
+     margin: 20px auto 15px auto;
 }
 
 #wrap-outer {
@@ -131,10 +187,12 @@ hr {
 
 }
 
-#rquery{
+
+
+#show{
     display: block;
     border: 2px rgb(117, 119, 105) solid;
-    margin: auto;
+    margin: 20px auto 15px auto;
     padding: 10px 25px 15px 25px;
     background: rgb(36, 35, 34);
     border-radius: 4px;
@@ -172,6 +230,7 @@ hr {
     width: 500px;
     margin: auto;
     text-align: center;
+    height: 250px;
 }
 
 #btn {
@@ -253,7 +312,7 @@ hr {
     background-image: -o-linear-gradient(top, #3093c7, #1c5a85);
     background-image: linear-gradient(top, #3093c7, #1c5a85);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#3093c7, endColorstr=#1c5a85);
     position: relative;
-    top: 5px;
+    top: 12px;
     right: -540px;
     display: none;
     width: 130px;
@@ -283,57 +342,37 @@ hr {
     z-index: 1;
 }
 
-#outside .inside{
-    background: transparent;
-    padding: 1px 40px 4px 0;
-
+#operator{
+    display: block;
+    
 }
 
 
-#header {
-    background:url(../images/bg-header.jpg);
-    height:130px;
-    border-bottom: 1px solid rgb(202, 211, 218);
+#footer {
+	background:url(../images/bg-footer.png) repeat-x;
+	height:130px;
 }
-#header div {
-    margin:0 auto;
-    overflow:hidden;
-    padding:0 0 0 29px;
-    width:931px;
+#footer div {
+	margin:0 auto;
+	padding:0 10px;
+	width:940px;
 }
-#header div a#logo {
-    display:block;
-    float:left;
-    margin:25px 0 0;
+#footer div p {
+	color: rgb(87, 99, 93); 
+	display:block;
+	float:left;
+	margin:20px 0;
 }
-#header div ul {
-    float:right;
-    list-style:none;
-    margin:0;
-    overflow:hidden;
-    padding:0;
+#footer div .connect {
+	float:right;
+	padding:14px 0 0;
+	width:auto;
 }
-#header div ul li {
-    float:left;
-    height:130px;
-    text-align:center;
-    width:110px;
-}
-#header div ul li a {
-    color:#787b66;
-    display:block;
-    height:130px;
-    letter-spacing:.075em;
-    line-height:150px;
-    text-align:center;
-    text-decoration:none;
-    text-shadow:0 1px 0 #fff;
-    width:110px;
-    font-size: 16px;
-}
-#header div ul li.selected a {
-    background:url(../images/bg-nav-selected.png) repeat-x;
-}
-#header div ul li.selected a, #header div ul li a:hover {
-    color:#1bb5ac;
+#footer div .connect a {
+	display:block;
+	float:left;
+	height:30px;
+	margin:0 0 0 28px;
+	text-indent:-99999px;
+	width:30px;
 }

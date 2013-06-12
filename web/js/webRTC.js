@@ -37,7 +37,7 @@ function gotStream(stream) {
 
     }, 200);
 
-    $('#rquery').fadeOut('900');
+    $('#show').fadeOut('900');
     $('#re , #goto').fadeOut('100');
 }
 
@@ -63,13 +63,16 @@ function capture() {
     context.drawImage(video, 0, 0, photo.width, photo.height);
     var img = document.createElement('img');
     img.src = canvas.toDataURL('image/jpeg');
-    img.id = "rquery";
-    video.src = " ";
-    $('#wrapper').fadeOut('200');
+    img.id = "show";
+
+    $('#wrapper').fadeOut('90');
+    insertAfter(document.getElementById('wrapper'), img);
     setTimeout(function() {
-        $('#re , #goto').fadeIn('300');
-        insertAfter(document.getElementById('wrapper'), img);
-    }, 700);
+        video.src = " ";
+        $('#re, #goto').slideDown('500');
+    }, 1200);
+
+    $('#video-section h1').fadeOut('200');
     /*
      $(document).ready(function() {
      $('.bg').animate({
@@ -102,7 +105,9 @@ function onStop() {
 
     $('#wrapper').fadeOut('700');
     setTimeout(function() {
+        $('#start').css('margin', '105px 0 0 0');
         $('#start').fadeIn('200');
+        $('#video-section h1').slideUp('400');
         $('#text-msg').fadeIn('600');
     }, 376);
 
