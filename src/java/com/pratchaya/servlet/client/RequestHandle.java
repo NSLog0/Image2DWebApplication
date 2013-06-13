@@ -5,7 +5,11 @@
 package com.pratchaya.servlet.client;
 
 import java.io.IOException;
+import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Enumeration;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -36,21 +40,8 @@ public class RequestHandle extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, JSONException {
-        response.setContentType("text/html;charset=UTF-8");
+        response.setContentType("application/json");
         PrintWriter out = response.getWriter();
-        try {
-            /* TODO output your page here. You may use following sample code. */
-            JSONObject jObj = new JSONObject();
-            JSONObject newObj = jObj.getJSONObject(request.getParameter("image"));
-
-            Enumeration eNames = (Enumeration) newObj.keys(); //gets all the keys
-            while (eNames.hasMoreElements()) {
-                out.print(eNames.nextElement());
-            }
-
-        } finally {
-            out.close();
-        }
 
     }
 

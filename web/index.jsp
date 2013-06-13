@@ -15,6 +15,7 @@
         <link rel="stylesheet" href="css/font-awesome.min.css">
         <link href='http://fonts.googleapis.com/css?family=Faster+One|Montserrat|Noticia+Text' rel='stylesheet' type='text/css'>
         <script src="js/jquery-1.9.0.min.js"></script>
+        <script src="js/main.js"></script>
         <title>Quality Analytics | Rice</title>
     </head>
 
@@ -51,7 +52,7 @@
         <div id="wrap-outer"><!-- Wraper content -->
             <article id="video-section"> <!-- video sec -->
                 <h1>Rice Quality Analytics with Images Processing</h1>
-                <input type="button" id="goto" onclick="sendto();" value="Analysis" /> 
+                <input type="button" id="goto" value="Analysis" /> 
                 <input type="button" id="re" onclick="onStart(this);"  value="Refresh" />
                 <section id="wrapper" hidden=""> <!-- camara content -->
                     <div id="video-area"> <!-- videdo wrapper -->
@@ -74,20 +75,45 @@
                     <p id="error">Click this "Play" to allow access local camera</p>
                 </div>
 
-                <!-- photo section-->
-                <div id="main-photo" hidden=""></div>
-                <div class="bg"> <!-- light box -->
-                    <img src="images/loading.gif" id="loadingImage"/>
-                </div>
-                <div class="lightbox">
-                    <a class="close">x</a>
-                    <p>press x to close</p>
-                    <img />
-                </div>
-                <!-- end light box -->
             </article> <!-- end video sec -->
         </div><!-- end Wraper Content -->
+
         <canvas id="photo"></canvas>
+
+        <div id="lightbox" hidden="">
+            <p>Click to close</p>
+            <div id="content">
+                <div id = "loading" ><img src="images/load.gif"/></div>
+                <div id="tbl-result" hidden="">  
+                    <table border="1" id="output">  
+                        <caption>Table of Results</caption>   
+                        <thead>  
+                            <tr>  
+                                <th scope="col">grains of rice</th>  
+                                <th scope="col">standard Value</th>  
+                                <th scope="col">Average calculated</th>  
+                                <th scope="col">Time</th>  
+                                <th scope="col">Size</th>  
+                            </tr>  
+                        <tbody>  
+                            <tr>  
+                                <td>100</td>  
+                                <td>27%-35%</td>  
+                                <td>20%</td>  
+                                <td>30s</td>  
+                                <td>250×249</td>  
+                            </tr>  
+                        </tbody>  
+                        </thead>  
+                    </table>  
+                    <div id="result">
+                        <a href="" class="preview"><img src="" alt="gallery thumbnail" class="i" width="350"/></a>
+                        <a href="" class="preview"><img src="" alt="gallery thumbnail" class="i" width="350"/></a>
+
+                    </div>
+
+                </div> 
+            </div></div>
 
         <div id="footer">
             <div>
@@ -97,31 +123,12 @@
 
             </div>
         </div>
-        <script>
-                    /*
-                     var url = "http://localhost:8084/REStfulService/resources/json/service/get"; 
-                     $(document).ready(function(){
-                     //attach a jQuery live event to the button
-                     $('#goto').click(function(){
-                     $.getJSON(url, function(data) {
-                     //alert(data); //uncomment this for debug
-                     //alert (data.item1+" "+data.item2+" "+data.item3); //further debug
-                     $('#showdata').html("<p>Broken: "+data[0].broken+" Unbroken: "+data[0].unbroken+" Count: "+data[0].count+"Image <img src=\""+data[0].image2base64+"\""+"/></p>");
-                     });
-                     });
-                     });
-                     */
-                    function sendto() {
-                        var url = 'http://localhost:8084/Image2DWebApplication/requesthandle';
-                        var imageData = $('query').prop('src');
-                        var param = {image: imageData};
-                        $.post(url, param, function(data) {
 
-                        });
-                    }
-        </script>
+
         <script src="js/videoOption.js"></script>
         <script src="js/webRTC.js"></script>
+        <script src="js/_ajax_post.js"></script>
+
 
     </body>
 </html>
