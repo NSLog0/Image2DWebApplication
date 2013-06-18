@@ -19,19 +19,19 @@
     </head>
 
     <body>
-        <header> <!-- Header -->
+        <!-- Header -->
+        <header> 
             <div id="outside">
-                <div id="inside" class="inside">
-                </div>
+                <div id="inside" class="inside"></div>
             </div>           
             <div id="header">
                 <div>
                     <a href="index.html" id="logo"><h1>{Rice}Analyze</h1></a>
                     <ul>
                         <li>
-                            <a href="index.jsp">Home</a>
+                            <a href="#">Home</a>
                         </li>
-                        <li class="selected">
+                        <li  class="selected">
                             <a href="includes/about.jsp">About</a>
                         </li>
                         <li>
@@ -40,20 +40,19 @@
                         <li>
                             <a href="includes/help.jsp">Help</a>
                         </li>
-
                     </ul>
                 </div>
             </div>
             <!-- end Navigation -->
         </header>
         <!-- end Logo -->
-        <div id="footer">
-            <div>
-                <p>
-                    &#169; 2013 Pratchaya Suputsopon. All Rights Reserved.
-                </p>
 
-            </div>
-        </div>
+        <div id="wrap-outer"><!-- Wraper content -->
+
+        </div><!-- end Wraper Content -->
+
+
+        <jsp:include page="../includes/component/footer.jsp"/>
+
     </body>
 </html>

@@ -6,13 +6,27 @@
     height:100%; 
     background:url(../images/overlay.png) repeat; 
     text-align:center;
-    z-index: 1000;
+    z-index: 100;
 }
 #lightbox p {
+
+}
+
+#close{
     text-align:right; 
     color:#fff; 
-    margin-right:20px; 
-    font-size:12px; 
+    margin-right: 28px; 
+    font-size: 15px; 
+    z-index: 101;
+    background: url(../images/close.png) no-repeat;
+    width: 28px;
+    height: 28px;
+    z-index: 105;
+    position: relative;
+    top: -34px;
+    left: 831px;
+    content: '';
+    cursor: pointer;
 }
 
 /*
@@ -23,16 +37,21 @@
 }
 */
 
-.posi {
-    font-size: 1.3em;
-    position: relative;
-    top: 4px;
-    color: black;
-    right: -210px;
+#powerby{
+    text-align: right;
+    margin: 120px 12px 0 0;
+    font-size: 12px;
 }
+
 
 #loading{
     position: relative;   
     margin: 300px auto 0 auto;
 
+}
+
+#content{
+    z-index: 102;
+    position: relative;
+    top: 10px;
 }

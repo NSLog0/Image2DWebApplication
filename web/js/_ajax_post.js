@@ -52,13 +52,18 @@ $("#goto").click(function() {
 
             } else {
 
-                // document.getElementById("output").children[0].children[0].children[0].innerHTML = data[0].width;
-                // document.getElementById("output").children[0].children[0].children[1].innerHTML = data[0].height;
-                /// document.getElementById("output").children[0].children[0].children[2].innerHTML = "Test";
-                //document.getElementById("output").children[0].children[0].children[3].innerHTML = "Test";
-                //document.getElementById("output").children[0].children[0].children[4].innerHTML = "Test";
-               $('#lightbox #content #tbl-result #result a.preview').attr("href",img);
-                $('#lightbox #content #tbl-result #result .i').attr("src",img);
+                //insert 
+                var rows = '<td>' + data[0].width + '</td>'
+                        + '<td>' + data[0].height + '</td>'
+                        + '<td>80%</td>'
+                        + '<td>80%</td>'
+                        + '<td>80%</td>'
+                        + '<td>80%</td>';
+
+                $('#output >  tbody > tr').append(rows);
+
+                $('#lightbox #content #tbl-result #result a.preview').attr("href", img);
+                $('#lightbox #content #tbl-result #result .i').attr("src", img);
                 setTimeout(function() {
                     $('#tbl-result').slideDown('slow');
                     $('#loading').hide();
@@ -68,10 +73,10 @@ $("#goto").click(function() {
 
             }
 
-            $('#lightbox').click(function() { //must use live, as the lightbox element is inserted into the DOM
+            $('#close').click(function() { //must use live, as the lightbox element is inserted into the DOM
                 $('#lightbox').hide();
             });
-            //$('#footer').html('<p>' + data[0].width + " " + data[0].height + " " + data[0].color_mode + " "
+            //  $('#footer').html('<p>' + data[0].keys().valueOf()+ " " + data[1] + " " + data[2] + " "
             //  + '<br/><img src="' + img + '" /></p>');
 
             console.log(status);

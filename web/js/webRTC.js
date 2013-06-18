@@ -16,6 +16,7 @@ function gotStream(stream) {
         // $('#start , #text-msg').fadeOut('200');
     }
 
+
     video.onerror = function(e) {
         stream.stop();
     };
@@ -26,6 +27,7 @@ function gotStream(stream) {
 
     // Since video.onloadedmetadata isn't firing for getUserMedia video, we have
     // to fake it.
+     $('#video-section h1').slideUp('400');
     setTimeout(function() {
         canvas.width = video.videoWidth;
         canvas.height = video.videoHeight;
@@ -34,11 +36,12 @@ function gotStream(stream) {
         $('#text-msg').css('display', 'none');
         $('#cap').css('display', 'block');
         $('#start').fadeOut('900');
+   
 
     }, 200);
 
-    $('#show').fadeOut('900');
-    $('#re , #goto').fadeOut('100');
+    $('#show').fadeOut('600');
+    $('#re , #goto').fadeOut('600');
 }
 
 function noStream(e) {
@@ -65,14 +68,14 @@ function capture() {
     img.src = canvas.toDataURL('image/jpeg');
     img.id = "show";
 
-    $('#wrapper').fadeOut('90');
+    $('#wrapper').fadeToggle('50');
     insertAfter(document.getElementById('wrapper'), img);
     setTimeout(function() {
         video.src = " ";
         $('#re, #goto').slideDown('500');
     }, 1200);
 
-    $('#video-section h1').fadeOut('200');
+    $('#video-section h1').fadeOut('500');
     /*
      $(document).ready(function() {
      $('.bg').animate({
@@ -130,4 +133,10 @@ function onStart() {
 
 function insertAfter(referenceNode, newNode) {
     referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+}
+
+
+function pageScroll() {
+    window.scrollBy(0, 50);
+
 }

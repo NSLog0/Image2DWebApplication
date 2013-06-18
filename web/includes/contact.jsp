@@ -47,13 +47,6 @@
             <!-- end Navigation -->
         </header>
         <!-- end Logo -->
-        <div id="footer">
-            <div>
-                <p>
-                    &#169; 2013 Pratchaya Suputsopon. All Rights Reserved.
-                </p>
-
-            </div>
-        </div>
+        <jsp:include page="../includes/component/footer.jsp"/>
     </body>
 </html>
