@@ -6,7 +6,7 @@
     <div id="header">
         <div>
             <a href="" id="logo">{Rice}Analyze</a>
-            <span class="description">Application for You!</span>
+            <span class="description">Application for Business!</span>
 
             <ul>
                 <li class="selected">

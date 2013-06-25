@@ -27,7 +27,7 @@ function gotStream(stream) {
 
     // Since video.onloadedmetadata isn't firing for getUserMedia video, we have
     // to fake it.
-     $('#video-section h1').slideUp('400');
+    $('#video-section h1').slideUp('400');
     setTimeout(function() {
         canvas.width = video.videoWidth;
         canvas.height = video.videoHeight;
@@ -36,7 +36,7 @@ function gotStream(stream) {
         $('#text-msg').css('display', 'none');
         $('#cap').css('display', 'block');
         $('#start').fadeOut('900');
-   
+        $('.slidesui').hide();
 
     }, 200);
 
@@ -69,9 +69,16 @@ function capture() {
     img.id = "show";
 
     $('#wrapper').fadeToggle('50');
+
+
     insertAfter(document.getElementById('wrapper'), img);
+
+
     setTimeout(function() {
+        $('#show').fadeIn('500');
+        $('.slidesui').fadeIn('600');
         video.src = " ";
+
         $('#re, #goto').slideDown('500');
     }, 1200);
 
@@ -112,6 +119,7 @@ function onStop() {
         $('#start').fadeIn('200');
         $('#video-section h1').slideUp('400');
         $('#text-msg').fadeIn('600');
+        $('.slidesui').hide();
     }, 376);
 
     video.src = " ";

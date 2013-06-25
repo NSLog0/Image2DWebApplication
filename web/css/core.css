@@ -150,6 +150,7 @@ hr {
 }
 
 #video-section {
+    height: 630px;
 
 }
 
@@ -175,6 +176,7 @@ hr {
 
 #wrap-outer {
     z-index: 20;
+    height: 510px;
 }
 
 #navigation {
@@ -236,7 +238,7 @@ hr {
 
 
 #show{
-    display: block;
+    display: none;
     border: 2px rgb(117, 119, 105) solid;
     margin: 20px auto 15px auto;
     padding: 10px 25px 15px 25px;
@@ -244,6 +246,7 @@ hr {
     border-radius: 4px;
     position: relative;
     z-index: -1;
+    right:-153px;
 }
 
 #video-area {
@@ -353,7 +356,7 @@ hr {
 #btnProcess{
     position: relative;
     width: 300px;
-    margin: auto;
+    margin: 0 auto 18px auto;
     top: 12px;
     padding-left: 21px;
 }
@@ -572,9 +575,8 @@ body {
     top: 6px;
 }
 
-.circle span{
+.circle p{
     top: 49px;
-
     color: rgba(189, 185, 199,0);
     font-family: 'Lato', sans-serif;
     font-weight: 900;
@@ -593,7 +595,6 @@ body {
     transition: color 0.8s ease-in-out;
     position: relative;
     top: 9px;
-    left: 10px;
 }
 
 .circle:before,
@@ -627,7 +628,7 @@ body {
         inset 0 -0.5em 0 rgba(0, 150, 255, 0.5);
 }
 
-.circle:hover > span {
+.circle:hover > p {
     color: #0099ff;
 }
 

@@ -21,17 +21,36 @@
 
             <!-- screen area -->
             <div id="wap">
-                <video id="screen"autoplay="" src=" "></video>> 
-
+                <video id="screen"autoplay="" src=" "></video>
+                <!-- end screen area -->
             </div>
-            <!-- end screen area -->
-        </div>
-        <!-- capture -->
-        <div class="circle" onclick="capture();">
-            <span>Capture</span>
-        </div>
-        <!-- end capture -->
+
+            <!-- capture -->
+            <div class="circle" onclick="capture();">
+                <p>Capture</p>
+            </div>
+            <!-- end capture -->
     </section> 
+    <div class="slidesui" hidden="">
+        <div id="box">
+        <input id="demo_box_2" class="css-checkbox" type="checkbox" checked="checked" />
+        <label for="demo_box_2" name="demo_lbl_2" class="css-label">Binary View</label>
+        </div>
+        <span>Threshold *</span>
+        <div class="slider"></div>
+        <div id="slider-result">190</div>  
+        <input type="hidden" id="hidden"/>
+
+        <span>Smooth</span>
+        <div class="slider2"></div>
+        <div id="slider-result2">3</div>  
+        <input type="hidden" id="hidden2"/>
+
+        <span>Sharpness</span>
+        <div class="slider3"></div>
+        <div id="slider-result3">0.5</div>  
+        <input type="hidden" id="hidden3"/>
+    </div>
     <!-- end camera content -->
     <!-- btn sec -->
     <p id="btn"> 

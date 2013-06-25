@@ -32,6 +32,7 @@
 
 $("#goto").click(function() {
     $('#lightbox').fadeIn('900');
+
     var txt = $('#show').attr('src');
     var i = [{"image": txt}];
     var base64 = i[0].image;
@@ -51,7 +52,13 @@ $("#goto").click(function() {
             if (status !== 'success') {
 
             } else {
-
+                $('#show').fadeOut('500');
+                $('#show').remove();
+                $('.slidesui').fadeOut('500');
+                $('#start').css('margin', '105px 0 0 0');
+                $('#start').fadeIn('200');
+                $('#re , #goto').fadeOut('600');
+                $('#text-msg').fadeIn('600');
                 //insert 
                 var rows = '<td>' + data[0].width + '</td>'
                         + '<td>' + data[0].height + '</td>'
@@ -75,6 +82,7 @@ $("#goto").click(function() {
 
             $('#close').click(function() { //must use live, as the lightbox element is inserted into the DOM
                 $('#lightbox').hide();
+                $('#output >  tbody > tr > td').remove();
             });
             //  $('#footer').html('<p>' + data[0].keys().valueOf()+ " " + data[1] + " " + data[2] + " "
             //  + '<br/><img src="' + img + '" /></p>');
