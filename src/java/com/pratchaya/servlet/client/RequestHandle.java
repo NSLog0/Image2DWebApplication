@@ -5,20 +5,20 @@
 package com.pratchaya.servlet.client;
 
 import java.io.IOException;
-import java.io.OutputStream;
 import java.io.PrintWriter;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.Enumeration;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.json.JSONException;
-import org.json.JSONObject;
+import javax.servlet.http.HttpSession;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 /**
  *
@@ -36,16 +36,46 @@ public class RequestHandle extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    private String message;
+    JSONObject obj = new JSONObject();
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, JSONException {
+            throws ServletException, IOException, ParseException {
         response.setContentType("application/json");
         PrintWriter out = response.getWriter();
+        String image = request.getParameter("image");
+        HttpSession session = request.getSession();
 
+        if (image != null) {
+            session.setAttribute("Image", image);
+            response.setStatus(200);
+            obj.put("image", image);
+        } else {
+            response.sendError(500);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    @Override
+    protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html");
+        HttpSession session = request.getSession(false);
+        PrintWriter out = response.getWriter();
+        String image;
+        if (session != null) {
+            image = (String) session.getAttribute("Image");
+            session.removeAttribute("Image");
+            session.invalidate();
+            out.print("delete!!");
+            out.flush();
+
+        } else {
+            out.print("no session!!");
+            out.flush();
+        }
+
+
+    }
+
     /**
      * Handles the HTTP
      * <code>GET</code> method.
@@ -59,8 +89,11 @@ public class RequestHandle extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            processRequest(request, response);
-        } catch (JSONException ex) {
+            response.setContentType("application/json");
+            PrintWriter out = response.getWriter();
+            out.print(obj);
+            out.flush();
+        } catch (Exception ex) {
             Logger.getLogger(RequestHandle.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -79,7 +112,7 @@ public class RequestHandle extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
-        } catch (JSONException ex) {
+        } catch (ParseException ex) {
             Logger.getLogger(RequestHandle.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

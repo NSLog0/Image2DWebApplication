@@ -1,54 +1,29 @@
-/* 
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- *//*
-  $('#goto').live("click", function() {
-  var txt = $('show').attr('src');
-  var i = {"Image": [{"image": txt}]};
-  var base64 = i.Image[0].image;
-  base64 = base64.replace(/^.*base64,/i, "");
-  i.Image[0].image = base64;
-  console.log('add');
-  $.ajax({
-  type: 'POST',
-  contentType: 'application/json',
-  url: "/RESTfulService/resources/json/service/api",
-  dataType: "json",
-  data: JSON.stringify(i),
-  success: function(data, status) {
-  console.log('add: ' + status);
-  var img = data[0].image;
-  // $('#showdata').html('<p>' + data[0].width + " " + data[0].height + " " + data[0].color_mode + " "
-  //   + '<br/><img src="' + img + '" /></p>');
-  lightResult();
-  // console.log(status);
-  },
-  error: function(data, status) {
-  alert("send data error:" + status);
-  }
-  });
-  
-  });*/
-
 $("#goto").click(function() {
     $('#lightbox').fadeIn('900');
 
-    var txt = $('#show').attr('src');
-    var i = [{"image": txt}];
-    var base64 = i[0].image;
-    base64 = base64.replace(/^.*base64,/i, "");
-    i[0].image = base64;
-    console.log('add');
+    //var txt = $('#show').attr('src');
+    var i = [{"getstat": "true"}];
+    //var base64 = i[0].image;
+    //base64 = base64.replace(/^.*base64,/i, "");
+    //i[0].image = base64;
     $.ajax({
         type: 'POST',
         contentType: 'application/json',
-        url: "/RESTfulService/resources/json/service/api",
+        url: "/processor/resources/service/api",
         dataType: "json",
-        data: JSON.stringify({"Image": i}),
+        data: JSON.stringify({"Stat": i}),
         success: function(data, status, xhr) {
-            console.log('add: ' + status);
+            console.log('json: ' + status);
+            var img = data[0].before;
+            var _img = data[0].after;
 
-            var img = data[0].image;
+            $.getScript('js/video.js', function()
+            {
+                _img = normal;
+                thres = "";
+                normal = "";
+            });
+
             if (status !== 'success') {
 
             } else {
@@ -60,17 +35,20 @@ $("#goto").click(function() {
                 $('#re , #goto').fadeOut('600');
                 $('#text-msg').fadeIn('600');
                 //insert 
-                var rows = '<td>' + data[0].width + '</td>'
-                        + '<td>' + data[0].height + '</td>'
-                        + '<td>80%</td>'
-                        + '<td>80%</td>'
-                        + '<td>80%</td>'
-                        + '<td>80%</td>';
+                var rows = '<td>' + data[0].oftotal + '</td>'
+                        + '<td>' + data[0].standard + '</td>'
+                        + '<td>' + data[0].broken + '</td>'
+                        + '<td>' + data[0].unbrok + '</td>'
+                        + '<td>' + data[0].avgloss +'%'+ '</td>'
+                        + '<td>' + data[0].avggood +'%'+ '</td>';
 
                 $('#output >  tbody > tr').append(rows);
 
-                $('#lightbox #content #tbl-result #result a.preview').attr("href", img);
+                $('#lightbox #content #tbl-result #result a#set1').attr("href", img);
                 $('#lightbox #content #tbl-result #result .i').attr("src", img);
+
+                $('#lightbox #content #tbl-result #result a#set2').attr("href", _img);
+                $('#lightbox #content #tbl-result #result .j').attr("src", _img);
                 setTimeout(function() {
                     $('#tbl-result').slideDown('slow');
                     $('#loading').hide();
@@ -84,13 +62,11 @@ $("#goto").click(function() {
                 $('#lightbox').hide();
                 $('#output >  tbody > tr > td').remove();
             });
-            //  $('#footer').html('<p>' + data[0].keys().valueOf()+ " " + data[1] + " " + data[2] + " "
-            //  + '<br/><img src="' + img + '" /></p>');
-
             console.log(status);
         },
         error: function(data, status) {
             alert("send data error:" + status);
+            console.log(data);
         }
     });
 

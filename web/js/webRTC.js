@@ -52,80 +52,6 @@ function noStream(e) {
     document.getElementById('error').textContent = msg;
 }
 
-
-function close() {
-
-    $('.bg , .lightbox').css('display', 'none');
-}
-
-function capture() {
-
-    var photo = document.getElementById('photo'), context = photo.getContext('2d');
-    photo.width = video.clientWidth;
-    photo.height = video.clientHeight;
-    context.drawImage(video, 0, 0, photo.width, photo.height);
-    var img = document.createElement('img');
-    img.src = canvas.toDataURL('image/jpeg');
-    img.id = "show";
-
-    $('#wrapper').fadeToggle('50');
-
-
-    insertAfter(document.getElementById('wrapper'), img);
-
-
-    setTimeout(function() {
-        $('#show').fadeIn('500');
-        $('.slidesui').fadeIn('600');
-        video.src = " ";
-
-        $('#re, #goto').slideDown('500');
-    }, 1200);
-
-    $('#video-section h1').fadeOut('500');
-    /*
-     $(document).ready(function() {
-     $('.bg').animate({
-     "opacity": "0.9"
-     }, 300, "linear");
-     $('div#main-photo').each(function() {
-     var $a1 = $(this);
-     var src = $a1.find('img').attr('src');
-     $('.bg').fadeIn(600)
-     $('div.bg img#loadingImage').show();
-     $('div.lightbox img').attr('src', src);
-     $('div.lightbox img').addClass('query');
-     $('.lightbox').delay(2000).fadeIn(600);
-     });
-     
-     $('.close').click(function() {
-     
-     close();
-     });
-     });
-     */
-
-
-
-    //  gallery.removeChild(img);
-
-}
-
-function onStop() {
-
-    $('#wrapper').fadeOut('700');
-    setTimeout(function() {
-        $('#start').css('margin', '105px 0 0 0');
-        $('#start').fadeIn('200');
-        $('#video-section h1').slideUp('400');
-        $('#text-msg').fadeIn('600');
-        $('.slidesui').hide();
-    }, 376);
-
-    video.src = " ";
-
-}
-
 function onStart() {
     if (!navigator.getUserMedia) {
         document.getElementById('error').innerHTML = 'Sorry. <code>navigator.getUserMedia()</code> is not available.';
@@ -139,12 +65,3 @@ function onStart() {
 
 }
 
-function insertAfter(referenceNode, newNode) {
-    referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
-}
-
-
-function pageScroll() {
-    window.scrollBy(0, 50);
-
-}

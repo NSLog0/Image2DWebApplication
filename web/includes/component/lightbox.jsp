@@ -18,21 +18,13 @@
                     </tr>  
                 <tbody>  
                     <tr>  
-                        <!--
-                        <td>100</td>  
-                        <td>27%-35%</td>  
-                        <td>20</td>  
-                        <td>80</td>  
-                        <td>80%</td>  
-                        -->
                     </tr>  
                 </tbody>  
                 </thead>  
             </table>  
             <div id="result">
-                <a href="" class="preview"><img src="" alt="gallery thumbnail" class="i" width="320"/></a>
-                <a href="" class="preview"><img src="" alt="gallery thumbnail" class="i" width="320"/></a>
-
+                <a href="" id ="set1" class="preview"><img src="" alt="gallery thumbnail" class="i" width="320"/></a>
+                <a href="" id ="set2" class="preview"><img src="" alt="gallery thumbnail" class="j" width="320"/></a>
             </div>
             <p id="powerby">© 2013 Pratchaya Suputsopon. All Rights Reserved.</p>
         </div> 

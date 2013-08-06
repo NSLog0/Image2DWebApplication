@@ -26,30 +26,32 @@
             </div>
 
             <!-- capture -->
-            <div class="circle" onclick="capture();">
+            <div class="circle" onclick="capture();
+                createSession();">
                 <p>Capture</p>
             </div>
             <!-- end capture -->
     </section> 
+    <img src="" id="show" hidden=""/>
     <div class="slidesui" hidden="">
         <div id="box">
-        <input id="demo_box_2" class="css-checkbox" type="checkbox" checked="checked" />
-        <label for="demo_box_2" name="demo_lbl_2" class="css-label">Binary View</label>
+            <input id="demo_box_2" class="css-checkbox" type="checkbox" checked="checked" />
+            <label for="demo_box_2" name="demo_lbl_2" class="css-label">Binary View</label>
         </div>
         <span>Threshold *</span>
         <div class="slider"></div>
-        <div id="slider-result">190</div>  
-        <input type="hidden" id="hidden"/>
+        <div id="slider-result">127</div>  
+        <input type="hidden" id="hidden" value="127"/>
 
         <span>Smooth</span>
         <div class="slider2"></div>
         <div id="slider-result2">3</div>  
-        <input type="hidden" id="hidden2"/>
+        <input type="hidden" id="hidden2" value="3"/>
 
         <span>Sharpness</span>
         <div class="slider3"></div>
         <div id="slider-result3">0.5</div>  
-        <input type="hidden" id="hidden3"/>
+        <input type="hidden" id="hidden3" value="0.5"/>
     </div>
     <!-- end camera content -->
     <!-- btn sec -->
